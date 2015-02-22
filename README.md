@@ -1,33 +1,41 @@
-seed-element
+img-slideshow
 ============
 
-See the [component page](http://polymerlabs.github.io/seed-element) for more information.
+See the [github page](https://github.com/svstus/img-slideshow) for more information.
 
-## Getting Started
+## Summary
 
-We've put together a [guide to seed-element](http://www.polymer-project.org/docs/start/reusableelements.html) to help get you rolling.
+An simple element to display multiple images as slideshow.
 
-## Testing Your Element
+### Example
 
-Add the logic specific to your new element and verify its functionality. Good unit tests are essential to your verification plan but a good way to quickly sanity test your component is to access your demo.html file via a local web server. There are several ways to do this but one easy method is to run a simple web server that ships with Python, using the commands:
-
-```sh
-python -m SimpleHTTPServer
+```html
+<link rel="import" href="../core-animated-pages/transitions/cross-fade.html" >
+<img-slideshow width="1248" height="462" transitions="cross-fade-all" duration="3000"
+      srcs='["images/01.jpg",
+      "images/02.jpg",
+      "images/03.jpg",
+      "images/04.jpg"]'>
+</img-slideshow>
 ```
+### Attributes
 
-Or other method using NodeJS:
+#### srcs
 
-```sh
-http-server ./
-```
+List of images to be displayed.
 
-This starts a web server on port 8000, so you can test your new element by navigating a browser to `localhost:8000/test/index.html`.
+#### trasitions
 
-### web-component-tester
+Space separeted list of transtions to be used in between pages.
 
-The tests are also compatible with [web-component-tester](https://github.com/Polymer/web-component-tester). You can run them on multiple local browsers via:
+#### width
 
-```sh
-npm install -g web-component-tester
-wct
-```
+Width of all images.
+
+#### height
+
+Height of all images.
+
+#### duration
+
+Time interval in between switching images.
