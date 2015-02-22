@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#master",
-    "polymer": "Polymer/core-animated-pages#master"
+    "core-animated-pages": "Polymer/core-animated-pages#master"
   },
   "devDependencies": {
     "web-component-tester": "*"
