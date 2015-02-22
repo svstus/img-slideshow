@@ -11,19 +11,24 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <title>seed-element Demo</title>
+  <title>img-slideshow Demo</title>
 
   <script src="../webcomponentsjs/webcomponents.min.js"></script>
-  <link rel="import" href="seed-element.html">
+  <!-- Transition used in this example. -->
+  <link rel="import" href="../core-animated-pages/transitions/cross-fade.html" >
+  <link rel="import" href="img-slideshow.html">
 
 </head>
 <body unresolved>
 
-  <p>An example of using <code>&lt;seed-element&gt;</code>:</p>
+  <p>An example of using <code>&lt;img-slideshow&gt;</code>:</p>
 
-  <seed-element>
-    <h2>Hello seed-element</h2>
-  </seed-element>
+  <img-slideshow width="1248" height="462" transitions="cross-fade-all"
+      srcs='["images/01.jpg",
+      "images/02.jpg",
+      "images/03.jpg",
+      "images/04.jpg"]'>
+  </img-slideshow>
 
 </body>
 </html>

@@ -8,88 +8,71 @@
     subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <link rel="import" href="../polymer/polymer.html">
-
+<link rel="import" href="../core-animated-pages/core-animated-pages.html">
 <!--
-Element providing solution to no problem in particular.
+Element displaying images in slideshow.
 
 ##### Example
 
-    <seed-element></seed-element>
+    <img-slideshow width="1248" height="462" transitions="cross-fade-all"
+      srcs='["images/FB.COVER.IMAGE.001-01.jpg",
+      "images/FB.COVER.IMAGE.002-01.jpg",
+      "images/FB.COVER.IMAGE.003-01.jpg",
+      "images/FB.COVER.IMAGE.004-01.jpg"]'>
+      <link rel="import" href="../core-animated-pages/transitions/cross-fade.html" >
+    </img-slideshow>
 
-@element seed-element
-@blurb Element providing solution to no problem in particular.
+@element img-slideshow
+@blurb Element displaying images in slideshow.
 @status alpha
-@homepage http://polymerlabs.github.io/seed-element
+@homepage https://github.com/svstus/img-slideshow
 -->
-<polymer-element name="seed-element" attributes="notitle author">
+<polymer-element name="img-slideshow"
+  attributes="height srcs transitions width">
 
   <template>
-
-    <link rel="stylesheet" href="seed-element.css">
-
-    <h1>Hello from seed-element</h1>
-    <content></content>
-
+    <core-animated-pages transitions="{{transitions}}" id="pages">
+      <template repeat="{{ src in srcs }}">
+        <section>
+          <img src="{{src}}" width="{{width}}" height="{{height}}"/>
+        </section>
+    </template>
+    </core-animated-pages>
   </template>
 
   <script>
 
     Polymer({
-      /**
-       * The `author` attribute sets an initial author
-       *
-       * @attribute author
-       * @type string
-       * @default 'Dimitri Glazkov'
-       */
-      author: 'Dimitri Glazkov',
+      _nextImage: function(e) {
+        // TODO: support different strategy: random, sequential
+        this.$.pages.selected = (this.$.pages.selected + 1) % this.srcs.length;
+        this.job('nextImage', this._nextImage, this.duration);
+      },
 
-      /**
-       * `fancy` is a property that does something fancy.
-       *
-       * @property fancy
-       * @type bool
-       * @default false
-       */
-      fancy: false,
+      created: function() {
+        /**
+         * The `srcs` attribute sets the list of images to be displayed.
+         *
+         * @attribute srcs
+         * @type !Array.<string>
+         * @default []
+         */
+        this.srcs = [];
+
+        /**
+         * The `duration` attribute sets the duration for each image.
+         *
+         * @attribute duration
+         * @type number
+         * @default 5000
+         */
+        this.duration = 5000; // 5s.
+      },
 
       ready: function() {
-        // Ready is a lifecycle callback.
-        // You can do setup work in here.
-        // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
+        // schedule image switch
+        this.job('nextImage', this._nextImage, this.duration);
       },
-
-      /**
-       * The `sayHello` method will return a greeting.
-       *
-       * @method sayHello
-       * @param {String} greeting Pass in a specific greeting.
-       * @return {String} Returns a string greeting.
-       */
-      sayHello: function(greeting) {
-        var response = greeting || 'Hello World!';
-        return 'seed-element says, ' + response;
-      },
-
-      /**
-       * The `seed-element-lasers-success` event is fired whenever we
-       * call fireLasers.
-       *
-       * @event seed-element-lasers-success
-       * @param {Object} detail
-       *   @param {string} detail.sound An amazing sound.
-       */
-
-      /**
-       * The `fireLasers` method will fire the lasers. At least
-       * it will dispatch an event that claims lasers were fired :)
-       *
-       * @method fireLasers
-       */
-      fireLasers: function() {
-        this.fire('seed-element-lasers-success', { sound: 'Pew pew pew!' });
-      }
-
     });
 
   </script>
