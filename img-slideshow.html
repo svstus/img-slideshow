@@ -14,7 +14,10 @@ Element displaying images in slideshow.
 
 ##### Example
 
-    <img-slideshow width="1248" height="462" transitions="cross-fade-all"
+    <img-slideshow
+      width="1248" height="462"
+      transitions="cross-fade-all"
+      duration="3000"
       srcs='["images/FB.COVER.IMAGE.001-01.jpg",
       "images/FB.COVER.IMAGE.002-01.jpg",
       "images/FB.COVER.IMAGE.003-01.jpg",
@@ -28,7 +31,7 @@ Element displaying images in slideshow.
 @homepage https://github.com/svstus/img-slideshow
 -->
 <polymer-element name="img-slideshow"
-  attributes="height srcs transitions width">
+  attributes="duration height srcs transitions width">
 
   <template>
     <core-animated-pages transitions="{{transitions}}" id="pages">
@@ -67,6 +70,24 @@ Element displaying images in slideshow.
          * @default 5000
          */
         this.duration = 5000; // 5s.
+
+        /**
+         * The `width` attribute sets the width of all images.
+         *
+         * @attribute width
+         * @type number
+         * @default undefined
+         */
+        this.width = undefined;
+
+        /**
+         * The `height` attribute sets the height of all images.
+         *
+         * @attribute height
+         * @type number
+         * @default undefined
+         */
+        this.height = undefined;
       },
 
       ready: function() {

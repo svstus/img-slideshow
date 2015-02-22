@@ -12,41 +12,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <title>seed-element</title>
+  <title>img-slideshow</title>
 
   <script src="../../webcomponentsjs/webcomponents.min.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
 
   <!-- Step 1: import the element to test -->
-  <link rel="import" href="../seed-element.html">
+  <link rel="import" href="../img-slideshow.html">
 </head>
 <body>
 
   <!-- You use the document as a place to set up your fixtures. -->
-  <seed-element></seed-element>
+  <img-slideshow id="default"></img-slideshow>
+  <img-slideshow id="custom"
+    srcs='["../images/01.jpg", "../images/02.jpg"]'
+    width="100"
+    height="200"
+    duration="300"
+    transitions="my-transition"
+  ></img-slideshow>
 
   <script>
-    var myEl = document.querySelector('seed-element');
+    var defaultEl = document.querySelector('#default');
+    var customEl = document.querySelector('#custom');
 
-    suite('<seed-element>', function() {
-
-      test('defines the "author" property', function() {
-        assert.equal(myEl.author, 'Dimitri Glazkov');
+    suite('<img-slideshow>', function() {
+      
+      test('Sets all defualt properties', function() {
+        assert.equal(defaultEl.srcs.length, 0);
+        assert.equal(defaultEl.width, undefined);
+        assert.equal(defaultEl.height, undefined);
+        assert.equal(defaultEl.duration, 5000);
+        assert.equal(defaultEl.transitions, "");
       });
 
-      test('says hello', function() {
-        assert.equal(myEl.sayHello(), 'seed-element says, Hello World!');
 
-        var greetings = myEl.sayHello('greetings Earthlings');
-        assert.equal(greetings, 'seed-element says, greetings Earthlings');
-      });
-
-      test('fires lasers', function(done) {
-        myEl.addEventListener('seed-element-lasers-success', function(event) {
-          assert.equal(event.detail.sound, 'Pew pew pew!');
-          done();
-        });
-        myEl.fireLasers();
+      test('Sets all custom properties', function() {
+        assert.equal(customEl.srcs.length, 2);
+        assert.equal(customEl.width, 100);
+        assert.equal(customEl.height, 200);
+        assert.equal(customEl.duration, 300);
+        assert.equal(customEl.transitions, "my-transition");
       });
 
     });
