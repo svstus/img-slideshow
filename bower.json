@@ -1,0 +1,7 @@
+{
+  "name": "img-slideshow#gh-pages",
+  "private": true,
+  "dependencies": {
+    "img-slideshow": "svstus/img-slideshow#master"
+  }
+}

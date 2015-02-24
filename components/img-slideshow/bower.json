@@ -1,0 +1,29 @@
+{
+  "name": "img-slideshow",
+  "version": "0.0.0",
+  "authors": [
+    "Anonymous <alicia.x.tang@gmail.com>"
+  ],
+  "description": "Element display a list of images in slideshow.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "slideshow",
+    "img-slideshow"
+  ],
+  "main": "img-slideshow.html",
+  "license": "MIT",
+  "homepage": "https://github.com/svstus/img-slideshow/",
+  "ignore": [
+    "/.*",
+    "/tests/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#master",
+    "core-animated-pages": "Polymer/core-animated-pages#master"
+  },
+  "devDependencies": {
+    "web-component-tester": "*"
+  }
+}
