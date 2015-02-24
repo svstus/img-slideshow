@@ -1,7 +1,7 @@
 img-slideshow
 ============
 
-See the [github page](https://github.com/svstus/img-slideshow) for more information.
+See the [github page](https://svstus.github.io/img-slideshow/components/img-slideshow/) for more information.
 
 ## Summary
 
