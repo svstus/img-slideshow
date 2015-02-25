@@ -1,6 +1,6 @@
 {
   "name": "img-slideshow",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "authors": [
     "Anonymous <alicia.x.tang@gmail.com>"
   ],
@@ -21,7 +21,8 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#master",
-    "core-animated-pages": "Polymer/core-animated-pages#master"
+    "core-animated-pages": "Polymer/core-animated-pages#master",
+    "core-image": "Polymer/core-image#master"
   },
   "devDependencies": {
     "web-component-tester": "*"

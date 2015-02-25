@@ -9,6 +9,7 @@
 -->
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../core-image/core-image.html">
 <!--
 Element displaying images in slideshow.
 
@@ -16,6 +17,7 @@ Element displaying images in slideshow.
 
     <img-slideshow
       width="1248" height="462"
+      sizing="cover"
       transitions="cross-fade-all"
       duration="3000"
       srcs='["images/FB.COVER.IMAGE.001-01.jpg",
@@ -31,13 +33,22 @@ Element displaying images in slideshow.
 @homepage http://svstus.github.io/img-slideshow/components/img-slideshow/ 
 -->
 <polymer-element name="img-slideshow"
-  attributes="duration height srcs transitions width">
+  attributes="duration height sizing srcs transitions width load loading position preload placeholder fade">
 
   <template>
     <core-animated-pages transitions="{{transitions}}" id="pages">
       <template repeat="{{ src in srcs }}">
         <section>
-          <img src="{{src}}" width="{{width}}" height="{{height}}"/>
+          <core-image src="{{src}}"
+            width="{{width}}" height="{{height}}"
+            sizing="{{sizing}}"
+            load="{{load}}"
+            position="{{position}}"
+            preload="{{preload}}"
+            placeholder="{{placeholder}}"
+            fade="{{fade}}"
+            loading="{{loading}}">
+          </core-image>
         </section>
     </template>
     </core-animated-pages>
@@ -53,6 +64,7 @@ Element displaying images in slideshow.
       },
 
       created: function() {
+
         /**
          * The `srcs` attribute sets the list of images to be displayed.
          *
@@ -88,6 +100,31 @@ Element displaying images in slideshow.
          * @default undefined
          */
         this.height = undefined;
+
+        /**
+         * The `sizing` attribute sets a sizing option for the image.
+         * <ul>Valid values are:
+         * <li><b>contain</b>: full aspect ratio of the image is contained within the element and letterboxed.
+         * <li><b>cover</b>: image is cropped in order to fully cover the bounds of the element.
+         * </ul>
+         * See `core-image` for more detail.
+         *
+         * @attribute sizing
+         * @type string
+         * @default 'contain'
+         */
+        this.sizing = 'contain';
+
+        /**
+         * When false, the image is prevented from loading and any placeholder is
+         * shown.  This may be useful when a binding to the src property is known to
+         * be invalid, to prevent 404 requests.
+         *
+         * @attribute load
+         * @type boolean
+         * @default true
+         */
+        this.load = true;
       },
 
       ready: function() {

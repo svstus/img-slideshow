@@ -20,19 +20,19 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#master",
-    "core-animated-pages": "Polymer/core-animated-pages#master"
+    "core-animated-pages": "Polymer/core-animated-pages#master",
+    "core-image": "Polymer/core-image#master"
   },
   "devDependencies": {
     "web-component-tester": "*"
   },
-  "_release": "5ff4524d07",
+  "_release": "ddbad2fd0c",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "5ff4524d0747f84645e3a0744591716d4438237c"
+    "commit": "ddbad2fd0cc06ebdfa0fa5303673538cd40ad5c7"
   },
   "_source": "git://github.com/svstus/img-slideshow.git",
   "_target": "master",
-  "_originalSource": "svstus/img-slideshow",
-  "_direct": true
+  "_originalSource": "svstus/img-slideshow"
 }
